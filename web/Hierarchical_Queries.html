@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery/jquery.js"></script>
+    <script>
+        $(function (){
+            $("#city>option:selected").val();
+            $.get("HQS",
+                data={"city_id":$("#city>option:selected").val()},
+                function (data){
+                    //更新第二个下拉列表
+                    $.each(
+                        data,function (index,shi_name){
+                            $("#shi").append(" <option>"+shi_name.name+"</option>")
+                        }
+                    )
+                },
+                dataType="json",
+            );
+        })
+    </script>
+</head>
+<body>
+<select id="city">
+    <option value="1" selected>河北</option>
+    <option value="2">山西</option>
+    <option value="3">内蒙古</option>
+    <option value="8">福建</option>
+    <option value="9">江西</option>
+</select>
+<br>
+<select id="shi">
+
+</select>
+</body>
+</html>
